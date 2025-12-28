@@ -62,6 +62,14 @@ jobs:
         run: pnpm run build
         env:
           PAGES_BASE_PATH: ${{ steps.setup_pages.outputs.base_path }}
+          NODE_ENV: production
+
+      - name: List build output
+        run: |
+          echo "Listing build output directory:"
+          ls -la ./out
+          echo "Checking for CSS files:"
+          find ./out -name "*.css" -type f
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
