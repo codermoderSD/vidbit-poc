@@ -1,7 +1,12 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: "export",
+  basePath: "/vidbit-poc",
+  assetPrefix: "/vidbit-poc/",
+  images: {
+    unoptimized: true,
+  },
 };
 
 export default nextConfig;
