@@ -1,7 +1,18 @@
 import type React from "react";
 import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+
+const geist = Geist({
+  variable: "--font-sans",
+  subsets: ["latin"],
+});
+
+const geist_mono = Geist_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "vidbit - Interactive Course Previews",
@@ -34,7 +45,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`font-sans antialiased`}>
+      <body
+        className={`${geist.variable} ${geist_mono.variable} font-sans antialiased`}
+      >
         {children}
         <Analytics />
       </body>
