@@ -818,208 +818,251 @@ export default function AdminDashboard() {
                 Module Access Control
               </CardTitle>
               <CardDescription>
-                Control which modules users can access and set viewing permissions
+                Control which modules users can access and set viewing
+                permissions
               </CardDescription>
             </CardHeader>
             <CardContent>
-                  {/* Summary Stats */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
-                    <div className="bg-muted/50 rounded-lg p-3 text-center">
-                      <p className="text-2xl font-bold text-foreground">10</p>
-                      <p className="text-xs text-muted-foreground">Total Modules</p>
-                    </div>
-                    <div className="bg-green-50 rounded-lg p-3 text-center">
-                      <p className="text-2xl font-bold text-green-600">
-                        {Object.values(moduleAccess).filter((m) => m.accessType === "full").length}
-                      </p>
-                      <p className="text-xs text-muted-foreground">Full Access</p>
-                    </div>
-                    <div className="bg-blue-50 rounded-lg p-3 text-center">
-                      <p className="text-2xl font-bold text-blue-600">
-                        {Object.values(moduleAccess).filter((m) => m.accessType === "preview").length}
-                      </p>
-                      <p className="text-xs text-muted-foreground">Preview Only</p>
-                    </div>
-                    <div className="bg-orange-50 rounded-lg p-3 text-center">
-                      <p className="text-2xl font-bold text-orange-600">
-                        {Object.values(moduleAccess).filter((m) => m.accessType === "scheduled").length}
-                      </p>
-                      <p className="text-xs text-muted-foreground">Scheduled</p>
-                    </div>
-                  </div>
+              {/* Summary Stats */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                <div className="bg-muted/50 rounded-lg p-3 text-center">
+                  <p className="text-2xl font-bold text-foreground">10</p>
+                  <p className="text-xs text-muted-foreground">Total Modules</p>
+                </div>
+                <div className="bg-green-50 rounded-lg p-3 text-center">
+                  <p className="text-2xl font-bold text-green-600">
+                    {
+                      Object.values(moduleAccess).filter(
+                        (m) => m.accessType === "full"
+                      ).length
+                    }
+                  </p>
+                  <p className="text-xs text-muted-foreground">Full Access</p>
+                </div>
+                <div className="bg-blue-50 rounded-lg p-3 text-center">
+                  <p className="text-2xl font-bold text-blue-600">
+                    {
+                      Object.values(moduleAccess).filter(
+                        (m) => m.accessType === "preview"
+                      ).length
+                    }
+                  </p>
+                  <p className="text-xs text-muted-foreground">Preview Only</p>
+                </div>
+                <div className="bg-orange-50 rounded-lg p-3 text-center">
+                  <p className="text-2xl font-bold text-orange-600">
+                    {
+                      Object.values(moduleAccess).filter(
+                        (m) => m.accessType === "scheduled"
+                      ).length
+                    }
+                  </p>
+                  <p className="text-xs text-muted-foreground">Scheduled</p>
+                </div>
+              </div>
 
-                  {/* Access Legend */}
-                  <div className="flex flex-wrap gap-3 mb-4 p-3 bg-muted/30 rounded-lg">
-                    <div className="flex items-center gap-2">
-                      <Badge variant="outline" className="text-green-600 border-green-600 bg-green-50">
-                        <Globe className="h-3 w-3 mr-1" />
-                        Full
-                      </Badge>
-                      <span className="text-xs text-muted-foreground">All bits visible</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Badge variant="outline" className="text-blue-600 border-blue-600 bg-blue-50">
-                        <Timer className="h-3 w-3 mr-1" />
-                        Preview
-                      </Badge>
-                      <span className="text-xs text-muted-foreground">Limited duration</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Badge variant="outline" className="text-orange-600 border-orange-600 bg-orange-50">
-                        <Calendar className="h-3 w-3 mr-1" />
-                        Scheduled
-                      </Badge>
-                      <span className="text-xs text-muted-foreground">Unlocks on date</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Badge variant="outline" className="text-red-600 border-red-600 bg-red-50">
-                        <Lock className="h-3 w-3 mr-1" />
-                        Locked
-                      </Badge>
-                      <span className="text-xs text-muted-foreground">Hidden</span>
-                    </div>
-                  </div>
+              {/* Access Legend */}
+              <div className="flex flex-wrap gap-3 mb-4 p-3 bg-muted/30 rounded-lg">
+                <div className="flex items-center gap-2">
+                  <Badge
+                    variant="outline"
+                    className="text-green-600 border-green-600 bg-green-50"
+                  >
+                    <Globe className="h-3 w-3 mr-1" />
+                    Full
+                  </Badge>
+                  <span className="text-xs text-muted-foreground">
+                    All bits visible
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Badge
+                    variant="outline"
+                    className="text-blue-600 border-blue-600 bg-blue-50"
+                  >
+                    <Timer className="h-3 w-3 mr-1" />
+                    Preview
+                  </Badge>
+                  <span className="text-xs text-muted-foreground">
+                    Limited duration
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Badge
+                    variant="outline"
+                    className="text-orange-600 border-orange-600 bg-orange-50"
+                  >
+                    <Calendar className="h-3 w-3 mr-1" />
+                    Scheduled
+                  </Badge>
+                  <span className="text-xs text-muted-foreground">
+                    Unlocks on date
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Badge
+                    variant="outline"
+                    className="text-red-600 border-red-600 bg-red-50"
+                  >
+                    <Lock className="h-3 w-3 mr-1" />
+                    Locked
+                  </Badge>
+                  <span className="text-xs text-muted-foreground">Hidden</span>
+                </div>
+              </div>
 
-                  <div className="overflow-x-auto">
-                    <table className="w-full">
-                      <thead>
-                        <tr className="border-b border-border">
-                          <th className="text-left py-3 px-2 sm:px-4 text-xs font-medium text-muted-foreground">
-                            Module
-                          </th>
-                          <th className="text-center py-3 px-2 sm:px-4 text-xs font-medium text-muted-foreground hidden sm:table-cell">
-                            Bits
-                          </th>
-                          <th className="text-center py-3 px-2 sm:px-4 text-xs font-medium text-muted-foreground hidden md:table-cell">
-                            Duration
-                          </th>
-                          <th className="text-center py-3 px-2 sm:px-4 text-xs font-medium text-muted-foreground hidden lg:table-cell">
-                            Preview Time
-                          </th>
-                          <th className="text-center py-3 px-2 sm:px-4 text-xs font-medium text-muted-foreground">
-                            Access Type
-                          </th>
-                          <th className="text-right py-3 px-2 sm:px-4 text-xs font-medium text-muted-foreground">
-                            Status
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {courseModules.map((module) => (
-                          <tr
-                            key={module.id}
-                            className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors"
-                          >
-                            <td className="py-3 px-2 sm:px-4">
-                              <div className="flex items-center gap-2 sm:gap-3">
-                                <div className="p-2 bg-primary/10 rounded-md hidden sm:flex items-center justify-center min-w-8">
-                                  <span className="text-xs font-bold text-primary">{module.id}</span>
-                                </div>
-                                <div>
-                                  <p className="text-sm font-medium line-clamp-1">
-                                    {module.name}
-                                  </p>
-                                  <p className="text-xs text-muted-foreground sm:hidden">
-                                    {module.bits} bits • {module.totalDuration}
-                                  </p>
-                                </div>
-                              </div>
-                            </td>
-                            <td className="py-3 px-2 sm:px-4 text-center hidden sm:table-cell">
-                              <Badge variant="outline">{module.bits}</Badge>
-                            </td>
-                            <td className="py-3 px-2 sm:px-4 text-center hidden md:table-cell">
-                              <span className="text-sm text-muted-foreground">
-                                {module.totalDuration}
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-border">
+                      <th className="text-left py-3 px-2 sm:px-4 text-xs font-medium text-muted-foreground">
+                        Module
+                      </th>
+                      <th className="text-center py-3 px-2 sm:px-4 text-xs font-medium text-muted-foreground hidden sm:table-cell">
+                        Bits
+                      </th>
+                      <th className="text-center py-3 px-2 sm:px-4 text-xs font-medium text-muted-foreground hidden md:table-cell">
+                        Duration
+                      </th>
+                      <th className="text-center py-3 px-2 sm:px-4 text-xs font-medium text-muted-foreground hidden lg:table-cell">
+                        Preview Time
+                      </th>
+                      <th className="text-center py-3 px-2 sm:px-4 text-xs font-medium text-muted-foreground">
+                        Access Type
+                      </th>
+                      <th className="text-right py-3 px-2 sm:px-4 text-xs font-medium text-muted-foreground">
+                        Status
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {courseModules.map((module) => (
+                      <tr
+                        key={module.id}
+                        className="border-b border-border last:border-0 hover:bg-muted/30 transition-colors"
+                      >
+                        <td className="py-3 px-2 sm:px-4">
+                          <div className="flex items-center gap-2 sm:gap-3">
+                            <div className="p-2 bg-primary/10 rounded-md hidden sm:flex items-center justify-center min-w-8">
+                              <span className="text-xs font-bold text-primary">
+                                {module.id}
                               </span>
-                            </td>
-                            <td className="py-3 px-2 sm:px-4 text-center hidden lg:table-cell">
-                              <span className="text-sm text-muted-foreground">
-                                {module.previewDuration}
+                            </div>
+                            <div>
+                              <p className="text-sm font-medium line-clamp-1">
+                                {module.name}
+                              </p>
+                              <p className="text-xs text-muted-foreground sm:hidden">
+                                {module.bits} bits • {module.totalDuration}
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="py-3 px-2 sm:px-4 text-center hidden sm:table-cell">
+                          <Badge variant="outline">{module.bits}</Badge>
+                        </td>
+                        <td className="py-3 px-2 sm:px-4 text-center hidden md:table-cell">
+                          <span className="text-sm text-muted-foreground">
+                            {module.totalDuration}
+                          </span>
+                        </td>
+                        <td className="py-3 px-2 sm:px-4 text-center hidden lg:table-cell">
+                          <span className="text-sm text-muted-foreground">
+                            {module.previewDuration}
+                          </span>
+                        </td>
+                        <td className="py-3 px-2 sm:px-4">
+                          <div className="flex justify-center">
+                            <Select
+                              value={moduleAccess[module.id]?.accessType}
+                              onValueChange={(value) =>
+                                handleAccessTypeChange(module.id, value)
+                              }
+                            >
+                              <SelectTrigger className="w-28 sm:w-32 h-8 text-xs">
+                                <SelectValue />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="full">
+                                  <div className="flex items-center gap-2">
+                                    <Globe className="h-3 w-3 text-green-600" />
+                                    Full Access
+                                  </div>
+                                </SelectItem>
+                                <SelectItem value="preview">
+                                  <div className="flex items-center gap-2">
+                                    <Timer className="h-3 w-3 text-blue-600" />
+                                    Preview
+                                  </div>
+                                </SelectItem>
+                                <SelectItem value="scheduled">
+                                  <div className="flex items-center gap-2">
+                                    <Calendar className="h-3 w-3 text-orange-600" />
+                                    Scheduled
+                                  </div>
+                                </SelectItem>
+                                <SelectItem value="locked">
+                                  <div className="flex items-center gap-2">
+                                    <Lock className="h-3 w-3 text-red-600" />
+                                    Locked
+                                  </div>
+                                </SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                        </td>
+                        <td className="py-3 px-2 sm:px-4 text-right">
+                          <div className="flex items-center justify-end gap-2">
+                            <Badge
+                              variant="outline"
+                              className={getAccessColor(
+                                moduleAccess[module.id]?.accessType
+                              )}
+                            >
+                              {getAccessIcon(
+                                moduleAccess[module.id]?.accessType
+                              )}
+                              <span className="ml-1 hidden sm:inline">
+                                {moduleAccess[module.id]?.accessType ===
+                                  "full" && "Public"}
+                                {moduleAccess[module.id]?.accessType ===
+                                  "preview" && "Limited"}
+                                {moduleAccess[module.id]?.accessType ===
+                                  "scheduled" &&
+                                  moduleAccess[module.id]?.scheduledDate}
+                                {moduleAccess[module.id]?.accessType ===
+                                  "locked" && "Hidden"}
                               </span>
-                            </td>
-                            <td className="py-3 px-2 sm:px-4">
-                              <div className="flex justify-center">
-                                <Select
-                                  value={moduleAccess[module.id]?.accessType}
-                                  onValueChange={(value) =>
-                                    handleAccessTypeChange(module.id, value)
-                                  }
-                                >
-                                  <SelectTrigger className="w-28 sm:w-32 h-8 text-xs">
-                                    <SelectValue />
-                                  </SelectTrigger>
-                                  <SelectContent>
-                                    <SelectItem value="full">
-                                      <div className="flex items-center gap-2">
-                                        <Globe className="h-3 w-3 text-green-600" />
-                                        Full Access
-                                      </div>
-                                    </SelectItem>
-                                    <SelectItem value="preview">
-                                      <div className="flex items-center gap-2">
-                                        <Timer className="h-3 w-3 text-blue-600" />
-                                        Preview
-                                      </div>
-                                    </SelectItem>
-                                    <SelectItem value="scheduled">
-                                      <div className="flex items-center gap-2">
-                                        <Calendar className="h-3 w-3 text-orange-600" />
-                                        Scheduled
-                                      </div>
-                                    </SelectItem>
-                                    <SelectItem value="locked">
-                                      <div className="flex items-center gap-2">
-                                        <Lock className="h-3 w-3 text-red-600" />
-                                        Locked
-                                      </div>
-                                    </SelectItem>
-                                  </SelectContent>
-                                </Select>
-                              </div>
-                            </td>
-                            <td className="py-3 px-2 sm:px-4 text-right">
-                              <div className="flex items-center justify-end gap-2">
-                                <Badge
-                                  variant="outline"
-                                  className={getAccessColor(moduleAccess[module.id]?.accessType)}
-                                >
-                                  {getAccessIcon(moduleAccess[module.id]?.accessType)}
-                                  <span className="ml-1 hidden sm:inline">
-                                    {moduleAccess[module.id]?.accessType === "full" && "Public"}
-                                    {moduleAccess[module.id]?.accessType === "preview" && "Limited"}
-                                    {moduleAccess[module.id]?.accessType === "scheduled" &&
-                                      moduleAccess[module.id]?.scheduledDate}
-                                    {moduleAccess[module.id]?.accessType === "locked" && "Hidden"}
-                                  </span>
-                                </Badge>
-                              </div>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+                            </Badge>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
 
-                  {/* Summary Footer */}
-                  <div className="mt-4 p-4 bg-muted/30 rounded-lg flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                    <div className="text-sm">
-                      <span className="text-muted-foreground">Users can access </span>
-                      <span className="font-bold text-primary">{accessibleBits}</span>
-                      <span className="text-muted-foreground"> of </span>
-                      <span className="font-bold">{totalBits}</span>
-                      <span className="text-muted-foreground"> total bits</span>
-                    </div>
-                    <div className="flex gap-2">
-                      <Button size="sm" variant="outline">
-                        <Edit3 className="h-4 w-4 mr-1" />
-                        Bulk Edit
-                      </Button>
-                      <Button size="sm">
-                        Save Changes
-                      </Button>
-                    </div>
-                  </div>
+              {/* Summary Footer */}
+              <div className="mt-4 p-4 bg-muted/30 rounded-lg flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div className="text-sm">
+                  <span className="text-muted-foreground">
+                    Users can access{" "}
+                  </span>
+                  <span className="font-bold text-primary">
+                    {accessibleBits}
+                  </span>
+                  <span className="text-muted-foreground"> of </span>
+                  <span className="font-bold">{totalBits}</span>
+                  <span className="text-muted-foreground"> total bits</span>
+                </div>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="outline">
+                    <Edit3 className="h-4 w-4 mr-1" />
+                    Bulk Edit
+                  </Button>
+                  <Button size="sm">Save Changes</Button>
+                </div>
+              </div>
             </CardContent>
           </Card>
 
