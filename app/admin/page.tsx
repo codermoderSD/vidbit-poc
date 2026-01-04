@@ -50,6 +50,8 @@ import {
   Timer,
   Globe,
   Edit3,
+  ShoppingCart,
+  Target,
 } from "lucide-react";
 
 // Dummy data for KPIs
@@ -62,7 +64,49 @@ const kpiData = {
   watchTimeChange: -2.1,
   searchQueries: 45672,
   searchChange: 15.7,
+  conversionRate: 24.8,
+  conversionChange: 5.2,
 };
+
+// Conversion funnel data
+const conversionFunnelData = {
+  trialUsers: 8234,
+  engagedUsers: 5421,
+  purchasedUsers: 2042,
+  trialToPurchase: 24.8,
+};
+
+// Course conversion data
+const courseConversionData = [
+  {
+    course: "React Masterclass",
+    trials: 2840,
+    conversions: 892,
+    rate: 31.4,
+    revenue: 44600,
+  },
+  {
+    course: "TypeScript Pro",
+    trials: 2156,
+    conversions: 548,
+    rate: 25.4,
+    revenue: 27400,
+  },
+  {
+    course: "Next.js Advanced",
+    trials: 1876,
+    conversions: 412,
+    rate: 22.0,
+    revenue: 20600,
+  },
+  {
+    course: "Node.js Backend",
+    trials: 1362,
+    conversions: 190,
+    rate: 13.9,
+    revenue: 9500,
+  },
+];
 
 // Most searched questions data
 const topSearchedQuestions = [
@@ -414,7 +458,7 @@ export default function AdminDashboard() {
         {/* Main Dashboard Content */}
         <main className="p-4 sm:p-6 space-y-6">
           {/* KPI Cards */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
             <Card>
               <CardContent className="pt-4 sm:pt-6">
                 <div className="flex items-start justify-between">
@@ -506,6 +550,30 @@ export default function AdminDashboard() {
                   </div>
                   <div className="p-2 sm:p-3 bg-purple-500/10 rounded-full">
                     <Search className="h-4 w-4 sm:h-5 sm:w-5 text-purple-500" />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="pt-4 sm:pt-6">
+                <div className="flex items-start justify-between">
+                  <div>
+                    <p className="text-xs sm:text-sm text-muted-foreground">
+                      Conversion Rate
+                    </p>
+                    <p className="text-xl sm:text-2xl font-bold mt-1">
+                      {kpiData.conversionRate}%
+                    </p>
+                    <div className="flex items-center gap-1 mt-1">
+                      <ArrowUpRight className="h-3 w-3 sm:h-4 sm:w-4 text-green-500" />
+                      <span className="text-xs sm:text-sm text-green-500">
+                        {kpiData.conversionChange}%
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-2 sm:p-3 bg-emerald-500/10 rounded-full">
+                    <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5 text-emerald-500" />
                   </div>
                 </div>
               </CardContent>
@@ -800,6 +868,201 @@ export default function AdminDashboard() {
                                 {bit.completion}%
                               </span>
                             </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Conversion Rate Analytics Section */}
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6">
+            {/* Conversion Funnel */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                  <Target className="h-5 w-5" />
+                  Trial to Purchase Funnel
+                </CardTitle>
+                <CardDescription>
+                  How users convert from trying features to purchasing courses
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {/* Funnel visualization */}
+                  <div className="space-y-3">
+                    <div className="relative">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-sm font-medium">Trial Users</span>
+                        <span className="text-sm text-muted-foreground">
+                          {conversionFunnelData.trialUsers.toLocaleString()}
+                        </span>
+                      </div>
+                      <div className="h-10 bg-blue-500 rounded-md flex items-center justify-center relative">
+                        <span className="text-white text-sm font-medium">
+                          100%
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="relative">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-sm font-medium">
+                          Engaged Users
+                        </span>
+                        <span className="text-sm text-muted-foreground">
+                          {conversionFunnelData.engagedUsers.toLocaleString()}
+                        </span>
+                      </div>
+                      <div
+                        className="h-10 bg-purple-500 rounded-md flex items-center justify-center"
+                        style={{
+                          width: `${
+                            (conversionFunnelData.engagedUsers /
+                              conversionFunnelData.trialUsers) *
+                            100
+                          }%`,
+                        }}
+                      >
+                        <span className="text-white text-sm font-medium">
+                          {(
+                            (conversionFunnelData.engagedUsers /
+                              conversionFunnelData.trialUsers) *
+                            100
+                          ).toFixed(1)}
+                          %
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="relative">
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-sm font-medium">
+                          Purchased Course
+                        </span>
+                        <span className="text-sm text-muted-foreground">
+                          {conversionFunnelData.purchasedUsers.toLocaleString()}
+                        </span>
+                      </div>
+                      <div
+                        className="h-10 bg-emerald-500 rounded-md flex items-center justify-center"
+                        style={{
+                          width: `${
+                            (conversionFunnelData.purchasedUsers /
+                              conversionFunnelData.trialUsers) *
+                            100
+                          }%`,
+                        }}
+                      >
+                        <span className="text-white text-sm font-medium">
+                          {conversionFunnelData.trialToPurchase}%
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Summary stats */}
+                  <div className="grid grid-cols-2 gap-3 mt-6 pt-4 border-t border-border">
+                    <div className="text-center p-3 bg-muted/50 rounded-lg">
+                      <p className="text-2xl font-bold text-emerald-600">
+                        {conversionFunnelData.trialToPurchase}%
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        Overall Conversion
+                      </p>
+                    </div>
+                    <div className="text-center p-3 bg-muted/50 rounded-lg">
+                      <p className="text-2xl font-bold text-primary">
+                        $
+                        {(
+                          conversionFunnelData.purchasedUsers * 50
+                        ).toLocaleString()}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        Total Revenue
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Course Conversion Table */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                  <ShoppingCart className="h-5 w-5" />
+                  Course Conversion Performance
+                </CardTitle>
+                <CardDescription>
+                  Conversion rates by course after feature trials
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="p-0 sm:px-6 sm:pb-6">
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b border-border">
+                        <th className="text-left py-3 px-4 text-xs font-medium text-muted-foreground">
+                          Course
+                        </th>
+                        <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground">
+                          Trials
+                        </th>
+                        <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground hidden sm:table-cell">
+                          Conversions
+                        </th>
+                        <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground">
+                          Rate
+                        </th>
+                        <th className="text-right py-3 px-4 text-xs font-medium text-muted-foreground hidden md:table-cell">
+                          Revenue
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {courseConversionData.map((course, index) => (
+                        <tr
+                          key={index}
+                          className="border-b border-border last:border-0"
+                        >
+                          <td className="py-3 px-4">
+                            <span className="text-sm font-medium line-clamp-1">
+                              {course.course}
+                            </span>
+                          </td>
+                          <td className="py-3 px-4 text-right">
+                            <span className="text-sm">
+                              {course.trials.toLocaleString()}
+                            </span>
+                          </td>
+                          <td className="py-3 px-4 text-right hidden sm:table-cell">
+                            <span className="text-sm">
+                              {course.conversions.toLocaleString()}
+                            </span>
+                          </td>
+                          <td className="py-3 px-4 text-right">
+                            <Badge
+                              variant="outline"
+                              className={
+                                course.rate >= 25
+                                  ? "text-emerald-600 border-emerald-600 bg-emerald-50"
+                                  : course.rate >= 20
+                                  ? "text-blue-600 border-blue-600 bg-blue-50"
+                                  : "text-orange-600 border-orange-600 bg-orange-50"
+                              }
+                            >
+                              {course.rate}%
+                            </Badge>
+                          </td>
+                          <td className="py-3 px-4 text-right hidden md:table-cell">
+                            <span className="text-sm font-medium text-emerald-600">
+                              ${course.revenue.toLocaleString()}
+                            </span>
                           </td>
                         </tr>
                       ))}

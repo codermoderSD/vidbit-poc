@@ -81,9 +81,11 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border bg-card sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-8">
-            <span className="text-xl font-bold text-foreground">CourseHub</span>
+        <div className="container mx-auto px-3 sm:px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-4 sm:gap-8">
+            <span className="text-lg sm:text-xl font-bold text-foreground">
+              CourseHub
+            </span>
             <nav className="hidden md:flex items-center gap-6 text-sm text-muted-foreground">
               <a href="#" className="hover:text-foreground transition-colors">
                 Categories
@@ -96,21 +98,27 @@ export default function Home() {
               </a>
             </nav>
           </div>
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="sm">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-xs sm:text-sm px-2 sm:px-3"
+            >
               Log in
             </Button>
-            <Button size="sm">Sign up</Button>
+            <Button size="sm" className="text-xs sm:text-sm px-2 sm:px-3">
+              Sign up
+            </Button>
           </div>
         </div>
       </header>
 
       {/* Course Hero - Dark Banner */}
       <div className="bg-zinc-900 text-white">
-        <div className="container mx-auto px-4 py-10 max-w-6xl">
-          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+        <div className="container mx-auto px-3 sm:px-4 py-6 sm:py-10 max-w-6xl">
+          <div className="flex flex-col lg:flex-row gap-5 sm:gap-8 lg:gap-12 items-start">
             {/* Video Preview - Compact */}
-            <div className="lg:w-80 shrink-0">
+            <div className="w-full lg:w-80 shrink-0">
               <div className="aspect-video bg-zinc-800 rounded-lg relative overflow-hidden group cursor-pointer shadow-lg">
                 <video
                   className="w-full h-full object-cover"
@@ -130,19 +138,19 @@ export default function Home() {
             </div>
 
             {/* Course Info */}
-            <div className="flex-1 space-y-4">
+            <div className="flex-1 space-y-3 sm:space-y-4">
               <div className="flex items-center gap-2 text-xs">
                 <span className="text-zinc-400">Development</span>
                 <span className="text-zinc-600">›</span>
                 <span className="text-zinc-400">Operating Systems</span>
               </div>
-              <h1 className="text-2xl lg:text-3xl font-bold leading-tight">
+              <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold leading-tight">
                 {course.title}
               </h1>
-              <p className="text-zinc-400 text-sm leading-relaxed line-clamp-2">
+              <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed line-clamp-2">
                 {course.description}
               </p>
-              <div className="flex flex-wrap items-center gap-3 text-xs pt-1">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs pt-1">
                 <div className="flex items-center gap-1">
                   <span className="font-bold text-amber-400">
                     {course.rating}
@@ -167,12 +175,12 @@ export default function Home() {
               </div>
 
               {/* Pricing & CTA - Inline */}
-              <div className="flex flex-wrap items-center gap-4 pt-3">
+              <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3 sm:gap-4 pt-3">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl lg:text-3xl font-bold">
+                  <span className="text-xl sm:text-2xl lg:text-3xl font-bold">
                     ${course.price}
                   </span>
-                  <span className="text-sm text-zinc-500 line-through">
+                  <span className="text-xs sm:text-sm text-zinc-500 line-through">
                     ${course.originalPrice}
                   </span>
                   <span className="text-xs font-medium text-green-500 bg-green-500/10 px-2 py-0.5 rounded">
@@ -182,14 +190,14 @@ export default function Home() {
                 <div className="flex items-center gap-2.5">
                   <Button
                     size="sm"
-                    className="bg-primary hover:bg-primary/90 font-medium"
+                    className="bg-primary hover:bg-primary/90 font-medium text-xs sm:text-sm"
                   >
                     Buy now
                   </Button>
                   <Button
                     size="sm"
                     variant="outline"
-                    className="border-zinc-600 bg-transparent text-zinc-100 hover:bg-zinc-800 hover:text-white font-medium"
+                    className="border-zinc-600 bg-transparent text-zinc-100 hover:bg-zinc-800 hover:text-white font-medium text-xs sm:text-sm"
                   >
                     Add to cart
                   </Button>
@@ -204,65 +212,72 @@ export default function Home() {
       </div>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-8 max-w-4xl">
+      <main className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 max-w-4xl">
         {/* Vidbit Section - Highlighted */}
-        <div className="relative mb-12">
+        <div className="relative mb-8 sm:mb-12">
           <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-2xl blur-sm"></div>
           <Card className="relative border-2 border-primary/30 shadow-lg bg-card overflow-hidden">
             <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-bold px-3 py-1.5 rounded-bl-lg flex items-center gap-1.5">
               <Zap className="w-3 h-3" />
               Powered by vidbit
             </div>
-            <CardContent className="p-6 pt-10 space-y-5" ref={searchSectionRef}>
+            <CardContent
+              className="p-4 sm:p-6 pt-10 space-y-4 sm:space-y-5"
+              ref={searchSectionRef}
+            >
               <div className="space-y-2">
-                <h2 className="text-lg font-semibold text-foreground">
+                <h2 className="text-base sm:text-lg font-semibold text-foreground">
                   Not sure if this course covers what you need?
                 </h2>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-xs sm:text-sm text-muted-foreground">
                   Ask any question and instantly see the exact video clip that
                   answers it.
                 </p>
               </div>
 
               <div className="space-y-3">
-                <div className="flex gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <input
                     type="text"
                     placeholder="e.g., How does paging work?"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onKeyPress={(e) => e.key === "Enter" && handleSearch()}
-                    className="flex-1 px-4 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm placeholder:text-muted-foreground/50 focus:border-primary focus:ring-1 focus:ring-primary/30 focus:outline-none transition-all"
+                    className="flex-1 px-3 sm:px-4 py-2.5 rounded-lg border border-border bg-background text-foreground text-sm placeholder:text-muted-foreground/50 focus:border-primary focus:ring-1 focus:ring-primary/30 focus:outline-none transition-all"
                   />
                   <Button
                     onClick={handleSearch}
-                    className="px-5 bg-primary text-primary-foreground hover:bg-primary/90"
+                    className="px-4 sm:px-5 bg-primary text-primary-foreground hover:bg-primary/90 w-full sm:w-auto"
                   >
                     <Search className="w-4 h-4 mr-2" />
                     Search
                   </Button>
                 </div>
 
-                <div className="flex flex-wrap gap-2 items-center">
-                  <span className="text-xs text-muted-foreground py-1">
-                    Try:
-                  </span>
-                  {randomQuestions.map((q) => (
+                <div className="space-y-2">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-muted-foreground shrink-0">
+                      Try:
+                    </span>
                     <button
-                      key={q.question}
-                      onClick={() => handleQuestionClick(q.question)}
-                      className="px-3 py-1 text-xs text-muted-foreground rounded-full bg-muted/60 hover:bg-primary/10 hover:text-primary border border-transparent hover:border-primary/30 transition-all"
+                      onClick={handleRefreshQuestions}
+                      className="p-1.5 rounded-full hover:bg-muted transition-colors shrink-0"
+                      title="Refresh questions"
                     >
-                      {q.question}
+                      <RefreshCw className="w-3.5 h-3.5 text-muted-foreground hover:text-foreground" />
                     </button>
-                  ))}
-                  <button
-                    onClick={handleRefreshQuestions}
-                    className="p-1 rounded-full hover:bg-muted transition-colors"
-                    title="Refresh questions"
-                  >
-                    <RefreshCw className="w-3.5 h-3.5 text-muted-foreground hover:text-foreground" />
-                  </button>
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    {randomQuestions.map((q) => (
+                      <button
+                        key={q.question}
+                        onClick={() => handleQuestionClick(q.question)}
+                        className="px-3 py-2 text-xs text-muted-foreground text-left rounded-lg bg-muted/60 hover:bg-primary/10 hover:text-primary border border-border/50 hover:border-primary/30 transition-all line-clamp-2"
+                      >
+                        {q.question}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
 
@@ -348,16 +363,18 @@ export default function Home() {
 
                   {/* CTA below video */}
                   <div className="space-y-3">
-                    <div className="flex items-center justify-between p-4 bg-primary/5 rounded-lg border border-primary/20">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 sm:p-4 bg-primary/5 rounded-lg border border-primary/20">
                       <div>
-                        <p className="text-sm font-medium text-foreground">
+                        <p className="text-xs sm:text-sm font-medium text-foreground">
                           This topic is covered in detail in the full course
                         </p>
                         <p className="text-xs text-muted-foreground">
                           Get complete access for ${course.price}
                         </p>
                       </div>
-                      <Button className="shrink-0">Enroll Now</Button>
+                      <Button className="shrink-0 w-full sm:w-auto">
+                        Enroll Now
+                      </Button>
                     </div>
 
                     {/* Ask Another Question Button */}
@@ -366,7 +383,7 @@ export default function Home() {
                         variant="ghost"
                         size="sm"
                         onClick={handleAskAnother}
-                        className="text-muted-foreground hover:text-foreground"
+                        className="text-muted-foreground hover:text-foreground text-xs sm:text-sm whitespace-normal h-auto py-2"
                       >
                         Still not convinced? Ask another question →
                       </Button>
@@ -379,11 +396,13 @@ export default function Home() {
         </div>
 
         {/* What you'll learn */}
-        <div className="mb-10">
+        <div className="mb-8 sm:mb-10">
           <Card className="border border-border">
-            <CardContent className="p-6">
-              <h2 className="text-xl font-bold mb-4">What you&apos;ll learn</h2>
-              <div className="grid sm:grid-cols-2 gap-3">
+            <CardContent className="p-4 sm:p-6">
+              <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">
+                What you&apos;ll learn
+              </h2>
+              <div className="grid sm:grid-cols-2 gap-2 sm:gap-3">
                 {[
                   "Understand how modern operating systems manage memory",
                   "Master paging and page table structures",
@@ -403,16 +422,18 @@ export default function Home() {
         </div>
 
         {/* Course Content */}
-        <div className="mb-10">
-          <h2 className="text-xl font-bold mb-4">Course content</h2>
-          <div className="text-sm text-muted-foreground mb-4">
+        <div className="mb-8 sm:mb-10">
+          <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">
+            Course content
+          </h2>
+          <div className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">
             4 sections • 14 lectures • 6h 15m total length
           </div>
           <Card className="border border-border divide-y divide-border">
             {course.curriculum.map((section, index) => (
-              <div key={index} className="p-4">
-                <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-semibold text-foreground">
+              <div key={index} className="p-3 sm:p-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-0 mb-2 sm:mb-3">
+                  <h3 className="font-semibold text-foreground text-sm sm:text-base">
                     {section.section}
                   </h3>
                   <span className="text-xs text-muted-foreground">
@@ -436,25 +457,27 @@ export default function Home() {
         </div>
 
         {/* Instructor */}
-        <div className="mb-10">
-          <h2 className="text-xl font-bold mb-4">Instructor</h2>
+        <div className="mb-8 sm:mb-10">
+          <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">
+            Instructor
+          </h2>
           <Card className="border border-border">
-            <CardContent className="p-6">
-              <div className="flex items-start gap-4">
-                <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center text-2xl font-bold text-muted-foreground">
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+                <div className="w-16 h-16 sm:w-16 sm:h-16 rounded-full bg-muted flex items-center justify-center text-xl sm:text-2xl font-bold text-muted-foreground shrink-0">
                   {course.instructor
                     .split(" ")
                     .map((n) => n[0])
                     .join("")}
                 </div>
-                <div className="flex-1">
+                <div className="flex-1 text-center sm:text-left">
                   <h3 className="font-semibold text-primary hover:underline cursor-pointer">
                     {course.instructor}
                   </h3>
                   <p className="text-sm text-muted-foreground mb-3">
                     Computer Science Professor
                   </p>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
+                  <div className="flex flex-wrap justify-center sm:justify-start items-center gap-x-4 gap-y-2 text-xs sm:text-sm text-muted-foreground mb-3">
                     <span className="flex items-center gap-1">
                       <Star className="w-4 h-4" /> 4.8 Instructor Rating
                     </span>
@@ -465,7 +488,7 @@ export default function Home() {
                       <Play className="w-4 h-4" /> 3 Courses
                     </span>
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs sm:text-sm text-muted-foreground">
                     Dr. Sarah Chen is a Computer Science professor with 15+
                     years of experience teaching operating systems and computer
                     architecture. Her courses focus on building deep
@@ -478,16 +501,21 @@ export default function Home() {
         </div>
 
         {/* Mobile Sticky Footer */}
-        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-card border-t border-border p-4 flex items-center justify-between gap-4">
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-card border-t border-border p-3 sm:p-4 flex items-center justify-between gap-3 sm:gap-4 z-40">
           <div>
-            <div className="flex items-baseline gap-2">
-              <span className="text-xl font-bold">${course.price}</span>
-              <span className="text-sm text-muted-foreground line-through">
+            <div className="flex items-baseline gap-1 sm:gap-2">
+              <span className="text-lg sm:text-xl font-bold">
+                ${course.price}
+              </span>
+              <span className="text-xs sm:text-sm text-muted-foreground line-through">
                 ${course.originalPrice}
               </span>
             </div>
           </div>
-          <Button size="lg" className="flex-1 max-w-[200px]">
+          <Button
+            size="default"
+            className="flex-1 max-w-[180px] sm:max-w-[200px] text-sm"
+          >
             Add to cart
           </Button>
         </div>
